@@ -1,22 +1,27 @@
 {
-  "name": "graphql-be",
+  "name": "graphql-fullstack",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "private": true,
+  "description": "Full-stack GraphQL + React + TypeScript service (Apollo Server v5 backend, Vite React frontend)",
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "body-parser": "^1.18.3",
-    "express": "^4.16.4",
-    "express-graphql": "^0.7.1",
-    "graphql": "^14.0.2",
-    "mongoose": "^5.4.2"
+    "dev": "concurrently -n mongo,backend,frontend -c green,blue,magenta \"npm run dev:mongo\" \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:mongo": "docker compose up mongo",
+    "dev:backend": "npm run dev --workspace=backend",
+    "dev:frontend": "npm run dev --workspace=frontend",
+    "build": "npm run build --workspaces",
+    "test": "npm run test --workspaces",
+    "lint": "npm run lint --workspaces"
   },
   "devDependencies": {
-    "nodemon": "^1.18.9"
+    "concurrently": "9.1.2",
+    "eslint": "^10.12.0",
+    "typescript-eslint": "^8.71.2"
+  },
+  "engines": {
+    "node": ">=20.19.0"
   }
 }

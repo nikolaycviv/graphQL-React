@@ -1,0 +1,22 @@
+services:
+  mongo:
+    image: mongo:8
+    container_name: graphql-mongo
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    env_file:
+      - ./backend/.env
+    environment:
+      MONGO_INITDB_DATABASE: events-graphql
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+
+volumes:
+  mongo-data:

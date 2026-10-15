@@ -1,0 +1,42 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "GraphQL API — Apollo Server v5 + Express + Mongoose + TypeScript",
+  "type": "commonjs",
+  "main": "dist/server.js",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/server.js",
+    "seed": "tsx src/seed.ts",
+    "test": "vitest run src",
+    "lint": "eslint src --ext .ts"
+  },
+  "dependencies": {
+    "@apollo/server": "5.5.1",
+    "@as-integrations/express4": "1.1.2",
+    "bcryptjs": "2.4.3",
+    "cors": "2.8.5",
+    "dotenv": "16.4.7",
+    "express": "4.22.3",
+    "graphql": "16.11.0",
+    "jsonwebtoken": "9.0.2",
+    "mongoose": "8.24.5",
+    "zod": "3.24.1"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "2.4.6",
+    "@types/cors": "2.8.17",
+    "@types/express": "4.17.21",
+    "@types/jsonwebtoken": "9.0.9",
+    "@types/node": "22.19.0",
+    "supertest": "7.0.0",
+    "tsx": "4.23.15",
+    "typescript": "5.7.2",
+    "vitest": "4.1.11"
+  },
+  "engines": {
+    "node": ">=20.19.0"
+  }
+}
